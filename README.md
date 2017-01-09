@@ -1,10 +1,14 @@
 
-https://hub.docker.com/r/sawanoboly/netshare-efs-for-d4aws/
+https://hub.docker.com/r/sawanoboly/docker-efs-mounter-for-docker-for-aws/
 
 Run it manually
 
 ```
-docker run --restart=always --privileged -d --name=netshare-efs-for-d4aws -v /var/run/docker/plugins:/var/run/docker/plugins -v /etc/resolv.conf:/etc/resolv.conf -v /var/lib/docker-volumes/netshare/efs:/var/lib/docker-volumes/netshare/efs sawanoboly/netshare-efs-for-d4aws:0.31
+docker run --restart=always --privileged -d --name=netshare-efs-for-d4aws \
+  -v /var/run/docker/plugins:/var/run/docker/plugins \
+  -v /etc/resolv.conf:/etc/resolv.conf \
+  -v /var/lib/docker-volumes/netshare/efs:/var/lib/docker-volumes/netshare/efs \
+  sawanoboly/docker-efs-mounter-for-docker-for-aws:0.33
 ```
 
 or add to the end of UserData for both manager and worker in CloudFormation template
@@ -19,5 +23,5 @@ or add to the end of UserData for both manager and worker in CloudFormation temp
 "-v /var/run/docker/plugins:/var/run/docker/plugins ",
 "-v /etc/resolv.conf:/etc/resolv.conf ",
 "-v /var/lib/docker-volumes/netshare/efs:/var/lib/docker-volumes/netshare/efs:shared ",
-"sawanoboly/netshare-efs-for-d4aws:0.31\n"
+"sawanoboly/docker-efs-mounter-for-docker-for-aws:0.33\n"
 ```
